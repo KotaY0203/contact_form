@@ -1,11 +1,19 @@
 <?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+   header('Location: index.html');
+}
+require_once('function.php');
+
+
+
    $nickname = $_POST['nickname'];
    if ($nickname == '') {
       $nickname_result = 'ニックネームが入力されていません。';
   } else {
       $nickname_result = 'ようこそ、' . $nickname .'様';
   }
-  echo $nickname_result; 
+  echo h($nickname_result); 
    echo '<br>';
    
    $email = $_POST['email'];
@@ -14,7 +22,7 @@
   } else {
       $email_result = 'メールアドレス：' . $email;
   }
-  echo $email_result;
+  echo h($email_result);
    echo '<br>';
 
    $content = $_POST['content'];
@@ -23,9 +31,11 @@
   } else {
       $content_result = 'お問い合わせ内容：' . $content;
   }
-  echo $content_result;
+  echo h($content_result);
    echo '<br>';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
