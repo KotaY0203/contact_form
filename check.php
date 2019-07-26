@@ -3,6 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
    header('Location: index.html');
 }
+require_once('dbconnect.php');
 require_once('function.php');
 
 
@@ -14,7 +15,7 @@ require_once('function.php');
       $nickname_result = 'ようこそ、' . $nickname .'様';
   }
   echo h($nickname_result); 
-   echo '<br>';
+   echo '<br>'; 
    
    $email = $_POST['email'];
    if ($email == '') {
@@ -52,7 +53,7 @@ require_once('function.php');
         <input type="hidden" name="content" value="<?php echo $content; ?>">
         <input type="button" value="戻る" onclick="history.back()">
         <?php if ($nickname != '' && $email != '' && $content != ''): ?>
-        <input type="submit" value="OK">
+        <input type="submit" value="提出">
 
         <?php endif; ?>
 
